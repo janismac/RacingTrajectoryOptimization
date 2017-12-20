@@ -1,6 +1,7 @@
 # Real-time Trajectory Optimization for Autonomous Vehicle Racing 
 
 This project demonstrates an algorithm that can determine a near-optimal racing trajectory in ca. 50ms.
+It is explained in [my bachelor's thesis](https://publications.rwth-aachen.de/record/710049/files/main.pdf).
 
 ## Demo Video
 
