@@ -11,14 +11,23 @@ p = params('SL','Track1');
 x0 = [0 0 0 0]'; % Initial state vector [px py vx vy]
 controller_output = [];
 
-while true
+% Setup video export
+mkdir results
+videoWriter = VideoWriter('results/output.mp4', 'MPEG-4');
+videoWriter.Quality = 99;
+videoWriter.open();
+
+for i = 1:300
 
     % Controller
     controller_output = p.controller(p,x0,controller_output);    
     
     % Visualization
     plotOptimizationResult(p, [x0 controller_output.x], controller_output);
-    drawnow
+    set(gcf,'Position',[10 10 1280 720]);
+    drawnow    
+    frame = getframe(gcf);
+    writeVideo(videoWriter,frame.cdata);
     
     % "Simulation"
     % Assumes that the vehicle follows the predicted trajectory exactly.
@@ -30,5 +39,7 @@ while true
     
     x0 = Ad * x0 + Bd * u;
 end
+
+videoWriter.close();
 
 end
