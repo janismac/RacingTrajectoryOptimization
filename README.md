@@ -14,7 +14,7 @@ To run this code you need:
 * MATLAB (Tested with version R2017a)
 * IBM ILOG CPLEX Optimization Studio (Tested with version 12.6.3)
 
-Without CPLEX, the MATLAB function `quadprog` is used as a fallback. But it is 50-100x slower for this application. CPLEX is free for academics, search for "IBM Academic Initiative".
+Without CPLEX, the MATLAB function `quadprog` is used as a fallback. CPLEX is free for academics, search for "IBM Academic Initiative".
 
 
 ## License
