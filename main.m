@@ -4,6 +4,7 @@ clc
 clf
 figure(gcf) % bring figure to front
 
+% Switch the parameter set to select the SL or SCR method.
 p = params('SL','Track1');
 %p = params('SCR','Track1');
 

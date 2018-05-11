@@ -124,10 +124,10 @@ if exist('cplexqp') == 6
     [vars,optimization_log.fval,optimization_log.exitflag,optimization_log.output,optimization_log.lambda] = ...
         cplexqp(quad_objective,lin_objective,Aineq,bineq,Aeq,beq,lb,ub,[],[]);
 else
-    warning('CPLEX is not installed, using quadprog() instead. CPLEX is about 50x faster.');
-    
+    options = optimoptions('quadprog', 'Display', 'none');
+    quad_objective_sp = sparse(quad_objective);
     [vars,optimization_log.fval,optimization_log.exitflag,optimization_log.output,optimization_log.lambda] = ...
-        quadprog(quad_objective,lin_objective,Aineq,bineq,Aeq,beq,lb,ub); 
+        quadprog(quad_objective_sp,lin_objective,Aineq,bineq,Aeq,beq,lb,ub,[],options); 
 end
 
 x_new = nan(p.nx,p.Hp);
